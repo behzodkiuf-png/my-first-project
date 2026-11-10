@@ -2,10 +2,176 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Моя первая страница</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101827">
+  <meta name="description" content="Мой первый учебный проект: знакомство с GitHub, Markdown и веб-разработкой.">
+  <title>Мой первый проект — учусь создавать</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0b1120;
+      --panel: rgba(20, 31, 51, .78);
+      --text: #edf3ff;
+      --muted: #a8b5cc;
+      --accent: #8b9cff;
+      --mint: #72e6c1;
+      --border: rgba(190, 205, 255, .16);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(ellipse at 12% 8%, rgba(86, 104, 221, .28), transparent 35rem),
+        radial-gradient(ellipse at 88% 30%, rgba(44, 177, 152, .16), transparent 30rem),
+        var(--bg);
+      color: var(--text);
+      font: 16px/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    a { color: var(--mint); }
+    a:hover { color: #b1ffe9; }
+
+    .container { width: min(1050px, calc(100% - 40px)); margin-inline: auto; }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding-block: 22px;
+    }
+
+    .brand { color: var(--text); font-weight: 750; text-decoration: none; letter-spacing: .02em; }
+    nav { display: flex; flex-wrap: wrap; gap: 18px; }
+    nav a { color: var(--muted); font-size: .94rem; text-decoration: none; }
+    nav a:hover { color: var(--text); }
+
+    .hero { padding: clamp(58px, 11vw, 118px) 0 74px; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 7px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,.04);
+      color: var(--mint);
+      font-size: .88rem;
+    }
+
+    h1 { max-width: 800px; margin: 22px 0 16px; font-size: clamp(2.6rem, 7vw, 5rem); line-height: 1.04; letter-spacing: -.055em; }
+    h1 span { color: var(--accent); }
+    .intro { max-width: 650px; margin: 0; color: var(--muted); font-size: clamp(1.05rem, 2vw, 1.22rem); }
+
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .button { display: inline-block; padding: 11px 17px; border: 1px solid var(--border); border-radius: 12px; text-decoration: none; font-weight: 650; transition: transform .18s ease, background .18s ease; }
+    .button:hover { transform: translateY(-2px); }
+    .button.primary { border-color: transparent; background: linear-gradient(110deg, #8795ff, #6ccdbd); color: #09121d; }
+    .button.secondary { background: rgba(255,255,255,.045); color: var(--text); }
+
+    section { padding: 36px 0; }
+    .section-heading { margin: 0 0 8px; font-size: clamp(1.65rem, 4vw, 2.2rem); letter-spacing: -.03em; }
+    .section-lead { margin: 0 0 24px; color: var(--muted); }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .card { padding: 22px; border: 1px solid var(--border); border-radius: 18px; background: var(--panel); box-shadow: 0 18px 50px rgba(0,0,0,.13); }
+    .card-icon { font-size: 1.6rem; }
+    .card h3 { margin: 10px 0 5px; font-size: 1.12rem; }
+    .card p { margin: 0; color: var(--muted); }
+
+    .learning { display: grid; grid-template-columns: 1.1fr .9fr; gap: 20px; align-items: stretch; }
+    .list { margin: 12px 0 0; padding: 0; list-style: none; }
+    .list li { display: flex; gap: 11px; margin: 12px 0; color: var(--muted); }
+    .check { color: var(--mint); font-weight: 800; }
+    .quote { display: flex; flex-direction: column; justify-content: center; background: linear-gradient(145deg, rgba(105,126,255,.18), rgba(71,196,163,.10)); }
+    .quote blockquote { margin: 0; font-size: 1.25rem; font-weight: 600; }
+    .quote p { margin: 14px 0 0; color: var(--muted); }
+
+    .footer { margin-top: 48px; padding: 24px 0 36px; border-top: 1px solid var(--border); color: var(--muted); font-size: .92rem; }
+    .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
+
+    @media (max-width: 720px) {
+      .topbar { align-items: flex-start; flex-direction: column; }
+      .grid, .learning { grid-template-columns: 1fr; }
+      .hero { padding-top: 55px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+  </style>
 </head>
 <body>
-  <h1>Привет, GitHub!</h1>
-  <p>Это моя первая веб-страница.</p>
+  <header class="container topbar">
+    <a class="brand" href="#home">✦ Мой первый проект</a>
+    <nav aria-label="Главная навигация">
+      <a href="#about">О проекте</a>
+      <a href="#learning">Чему учусь</a>
+      <a href="https://github.com/behzodkiuf-png/my-first-project">GitHub</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="container hero" id="home">
+      <span class="eyebrow">🌱 Учусь и пробую новое</span>
+      <h1>Привет, GitHub!<br><span>Это мой первый сайт.</span></h1>
+      <p class="intro">Я знакомлюсь с GitHub и веб-разработкой: создаю файлы, сохраняю изменения и учусь работать с ветками и pull request.</p>
+      <div class="actions">
+        <a class="button primary" href="#about">Посмотреть проект ↓</a>
+        <a class="button secondary" href="https://github.com/behzodkiuf-png/my-first-project">Открыть репозиторий ↗</a>
+      </div>
+    </section>
+
+    <section class="container" id="about">
+      <h2 class="section-heading">Маленький проект — большие открытия</h2>
+      <p class="section-lead">Здесь я постепенно осваиваю основы и превращаю знания в настоящий сайт.</p>
+      <div class="grid">
+        <article class="card">
+          <span class="card-icon" aria-hidden="true">🧩</span>
+          <h3>Файлы и код</h3>
+          <p>Создаю HTML-страницы и учусь делать их понятными и аккуратными.</p>
+        </article>
+        <article class="card">
+          <span class="card-icon" aria-hidden="true">🕰️</span>
+          <h3>История изменений</h3>
+          <p>С помощью коммитов сохраняю шаги работы и могу посмотреть, что менялось.</p>
+        </article>
+        <article class="card">
+          <span class="card-icon" aria-hidden="true">🌿</span>
+          <h3>Ветки и pull request</h3>
+          <p>Пробую работать над изменениями отдельно, а затем предлагать их проекту.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="container learning" id="learning">
+      <div class="card">
+        <h2 class="section-heading">Мои учебные цели</h2>
+        <p class="section-lead">Буду отмечать новые навыки по мере обучения.</p>
+        <ul class="list">
+          <li><span class="check">✓</span><span>Создать первый репозиторий</span></li>
+          <li><span class="check">✓</span><span>Добавить свою веб-страницу</span></li>
+          <li><span>○</span><span>Научиться уверенно работать с ветками</span></li>
+          <li><span>○</span><span>Создать и оформить pull request</span></li>
+        </ul>
+      </div>
+      <aside class="card quote">
+        <blockquote>«Каждый большой проект начинается с первого шага»</blockquote>
+        <p>Мой первый шаг — учиться, экспериментировать и не бояться ошибок.</p>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <div class="footer-inner">
+      <span>Сделано с интересом и любопытством 💙</span>
+      <span>Мой учебный проект на GitHub</span>
+    </div>
+  </footer>
 </body>
 </html>
